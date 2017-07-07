@@ -23,7 +23,7 @@ done
 
 # Configure
 
-mkdir build
+mkdir -v build
 cd build
 
 ../configure \

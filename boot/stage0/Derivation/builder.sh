@@ -13,7 +13,7 @@ export LC_ALL
 unpackTar() {
     if [ -n "$2" ]
     then
-        mkdir -p "$2"
+        mkdir -pv "$2"
         tar xaf "$1" -C "$2" --strip-components=1
     else
         tar xaf "$1"
@@ -22,6 +22,9 @@ unpackTar() {
 
 
 # Build
+
+## Show each command
+set -x
 
 ## Load each builder in sequence
 while [ "$#" -gt 0 ]
