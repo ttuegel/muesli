@@ -1,0 +1,3 @@
+[submodule "bootstrap/nixpkgs"]
+	path = boot/nixpkgs
+	url = https://github.com/NixOS/nixpkgs-channels.git
