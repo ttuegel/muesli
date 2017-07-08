@@ -1,5 +1,9 @@
 let
-  nixpkgs = import ../nixpkgs {};
+  nixpkgs =
+    let _pkgs = import ../nixpkgs {}; in {
+      inherit (_pkgs) bison fetchurl help2man lib stdenv;
+      m4 = _pkgs.gnum4;
+    };
   srcs = import ../srcs { inherit (nixpkgs) fetchurl; };
   config = import ./config.nix {
     Platform = import ../../lib/Platform.nix;
