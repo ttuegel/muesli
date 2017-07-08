@@ -48,6 +48,16 @@
       sha256 = "04hrwahdxyqdik559604r7wrj9ffklwvipgfxgj4ys4skbl6bdc7";
     };
   };
+  libtool = rec {
+    name = "libtool-2.4.6";
+    src = fetchurl {
+      url = "http://ftpmirror.gnu.org/libtool/${name}.tar.xz";
+      sha256 = "0vxj52zm709125gwv9qqlw02silj8bnjnh4y07arrz60r31ai1vw";
+    };
+    patches = [
+      ./libtool/libtool-passthru-flags.patch
+    ];
+  };
   mpc = rec {
     name = "mpc-1.0.3";
     src = fetchurl {

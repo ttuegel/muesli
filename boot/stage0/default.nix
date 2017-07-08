@@ -14,6 +14,7 @@ let
     inherit Derivation config;
     binutils = Package ./binutils;
     gcc = Package ./gcc;
+    libtool = Package ./libtool;
   };
 in
 stage0
