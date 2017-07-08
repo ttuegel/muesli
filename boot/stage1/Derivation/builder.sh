@@ -1,5 +1,8 @@
 # Environment
 
+## Exit immediately on error
+set -e
+
 ## Show each command
 set -x
 
