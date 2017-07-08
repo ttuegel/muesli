@@ -72,4 +72,11 @@
       sha256 = "1g32l2fg8f62lcyzzh88y3fsh6rk539qc6ahhdgvx7wpnf1dwpq1";
     };
   };
+  musl = rec {
+    name = "musl-1.1.16";
+    src = fetchurl {
+      url = "http://www.musl-libc.org/releases/${name}.tar.gz";
+      sha256 = "048h0w4yjyza4h05bkc6dpwg3hq6l03na46g0q1ha8fpwnjqawck";
+    };
+  };
 }
