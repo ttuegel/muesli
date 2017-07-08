@@ -1,7 +1,13 @@
 let
   nixpkgs =
-    let _pkgs = import ../nixpkgs {}; in {
-      inherit (_pkgs) bison coreutils dash fetchurl gcc gzip help2man lib;
+    let _pkgs = import ../nixpkgs {}; in rec {
+      inherit (_pkgs)
+        bison bzip2 coreutils dash diffutils fetchurl gcc gzip help2man lib lzma
+        xz stdenv;
+      autoconf = _pkgs.autoconf264;
+      automake = _pkgs.automake112x.override { inherit autoconf; };
+      awk = _pkgs.gawk;
+      grep = _pkgs.gnugrep;
       m4 = _pkgs.gnum4;
       make = _pkgs.gnumake;
       sed = _pkgs.gnused;

@@ -1,13 +1,17 @@
 { config, nixpkgs, stage0 }:
 
 let
-  inherit (nixpkgs) coreutils dash gzip lib make sed tar;
+  inherit (nixpkgs)
+    awk bzip2 coreutils dash diffutils grep gzip lib lzma m4 make sed tar xz;
   inherit (stage0) binutils gcc;
   inherit (config) platforms;
 in
 
 let
-  defaultBuildInputs = [ binutils coreutils dash gcc gzip make sed tar ];
+  defaultBuildInputs = [
+    awk binutils bzip2 coreutils dash diffutils gcc grep gzip lzma m4 make sed
+    tar xz
+  ];
 in
 
 {
