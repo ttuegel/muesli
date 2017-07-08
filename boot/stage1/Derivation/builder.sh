@@ -114,6 +114,10 @@ OBJCOPY=${target:?}-objcopy; export OBJCOPY
 OBJDUMP=${target:?}-objdump; export OBJDUMP
 RANLIB=${target:?}-ranlib; export RANLIB
 
+CC=${target:?}-gcc; export CC
+CPP=${target:?}-cpp; export CPP
+CXX=${target:?}-g++; export CXX
+
 
 # Definitions
 
