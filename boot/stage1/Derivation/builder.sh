@@ -59,7 +59,7 @@ do
     if [ -e "$inp/config/host/LDFLAGS" ]; then
         LDFLAGS="${LDFLAGS}${LDFLAGS:+ }$(cat $inp/config/host/LDFLAGS)"
     elif [ -d "$inp/lib" ]; then
-        LDFLAGS="${LDFLAGS}${LDFLAGS:+ }-L$inp/lib"
+        LDFLAGS="${LDFLAGS}${LDFLAGS:+ }-L$inp/lib -Wl,-rpath,$inp/lib"
     fi
 done
 
