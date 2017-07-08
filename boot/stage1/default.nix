@@ -22,6 +22,7 @@ let
   Package = file: import file { inherit nixpkgs srcs stage0 stage1; };
   stage1 = {
     inherit Derivation config;
+    libstdcxx = Package ./libstdcxx;
     musl = Package ./musl;
   };
 in
