@@ -29,12 +29,3 @@ make
 
 make install
 make "${out:?}/lib/musl-gcc.specs"
-
-
-# Fixup
-
-mkdir -pv "${out:?}/config/host"
-echo "-specs ${out:?}/lib/musl-gcc.specs" \
-     >> "${out:?}/config/host/CFLAGS"
-echo "-specs ${out:?}/lib/musl-gcc.specs" \
-     >> "${out:?}/config/host/CXXFLAGS"
