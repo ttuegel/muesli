@@ -23,6 +23,7 @@ let
     binutils = Package ./binutils;
     gmp = Package ./gmp;
     libstdcxx = Package ./libstdcxx;
+    mpfr = Package ./mpfr;
     musl = Package ./musl;
   };
 in
