@@ -3,13 +3,13 @@
 let
   inherit (nixpkgs)
     awk bzip2 coreutils dash diffutils grep gzip lib lzma m4 make sed tar xz;
-  inherit (stage0) binutils gcc;
+  inherit (stage0) binutils;
   inherit (config) platforms;
 in
 
 let
   defaultBuildInputs = [
-    awk binutils bzip2 coreutils dash diffutils gcc grep gzip lzma m4 make sed
+    awk binutils bzip2 coreutils dash diffutils grep gzip lzma m4 make sed
     tar xz
   ];
 in
