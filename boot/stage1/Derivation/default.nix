@@ -20,6 +20,7 @@ in
   src ? null,
   srcs ? {},
   env ? {},
+  passthru ? {},
   buildInputs ? [],
   hostInputs ? [],
 }:
@@ -57,4 +58,4 @@ derivation (env // srcs_ // {
   inherit hostInputs;
   builder = "${dash}/bin/dash";
   args = [ ./builder.sh builder ];
-})
+}) // passthru
