@@ -4,8 +4,6 @@ let
       inherit (_pkgs)
         bison bzip2 coreutils dash diffutils fetchurl gcc gzip help2man lib lzma
         patch xz;
-      autoconf = _pkgs.autoconf264;
-      automake = _pkgs.automake112x.override { inherit autoconf; };
       awk = _pkgs.gawk;
       grep = _pkgs.gnugrep;
       m4 = _pkgs.gnum4;
