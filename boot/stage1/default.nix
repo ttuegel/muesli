@@ -27,13 +27,13 @@ let
   Import = import ../../lib/Import.nix scope;
   Platform = import ../../lib/Platform.nix;
 
-  Derivation = extra: Import ./Derivation extra;
+  Derivation = Import ./Derivation {};
 
-  musl = Import ./musl { Derivation = Derivation {}; };
+  musl = Import ./musl { inherit Derivation; };
 
   stage1 = {
     inherit config musl;
-    Derivation = Derivation { libc = musl; };
+    Derivation = Derivation.Import.override { libc = musl; };
     binutils = Import ./binutils {};
     gmp = Import ./gmp {};
     libstdcxx = Import ./libstdcxx {};
