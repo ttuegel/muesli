@@ -21,6 +21,7 @@ let
   stage1 = {
     inherit Derivation config;
     binutils = Package ./binutils;
+    gmp = Package ./gmp;
     libstdcxx = Package ./libstdcxx;
     musl = Package ./musl;
   };
