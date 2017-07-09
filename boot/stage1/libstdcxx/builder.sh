@@ -25,7 +25,6 @@ gxx_include_dir="${out:?}/${target:?}/include/c++/${version:?}"
     --disable-nls \
     --disable-libstdcxx-threads \
     --disable-libstdcxx-pch \
-    --with-sysroot="${out:?}" \
     --with-gxx-include-dir="$gxx_include_dir"
 
 
