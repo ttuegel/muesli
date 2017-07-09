@@ -1,17 +1,19 @@
-{ config, nixpkgs, stage0 }:
+{
+  lib, platforms, libc ? null, buildCC ? null, targetCC,
+  awk, binutils, bzip2, coreutils, dash, diffutils, grep, gzip, lzma, m4, make,
+  patch, sed, tar, xz,
+}:
 
-let
-  inherit (nixpkgs)
-    awk bzip2 coreutils dash diffutils grep gzip lib lzma m4 make sed tar xz;
-  inherit (stage0) binutils;
-  inherit (config) platforms;
-in
+let targetCC_ = targetCC; in
+
+let targetCC = (cc: if libc == null then cc else libc.wrapCC cc) targetCC_; in
 
 let
   defaultBuildInputs = [
-    awk binutils bzip2 coreutils dash diffutils grep gzip lzma m4 make sed
-    tar xz
+    awk binutils buildCC bzip2 coreutils dash diffutils grep gzip lzma m4 make
+    patch sed tar targetCC xz
   ];
+  defaultHostInputs = [ libc ];
 in
 
 {
@@ -55,7 +57,7 @@ derivation (env // srcs_ // {
   host = platforms.host.string;
   build = platforms.build.string;
   buildInputs = defaultBuildInputs ++ buildInputs;
-  inherit hostInputs;
+  hostInputs = defaultHostInputs ++ hostInputs;
   builder = "${dash}/bin/dash";
   args = [ ./builder.sh builder ];
 }) // passthru

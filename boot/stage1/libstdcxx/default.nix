@@ -1,11 +1,7 @@
-{ nixpkgs, srcs, stage0, stage1, ... }:
+{ Derivation, srcs, platforms, musl, }:
 
 let
-  build_gcc = nixpkgs.gcc;
-  inherit (stage1) Derivation musl;
-  inherit (stage1.config) platforms;
-  inherit (builtins.parseDrvName gcc.name) version;
-  gcc = musl.wrapCC stage0.gcc;
+  inherit (builtins.parseDrvName srcs.gcc.name) version;
 in
 
 Derivation {
@@ -15,7 +11,6 @@ Derivation {
     arch = platforms.target.machine;
     inherit version;
   };
-  buildInputs = [ build_gcc gcc ];
   hostInputs = [ musl ];
   builder = ./builder.sh;
 }
