@@ -3,7 +3,7 @@ let
     let _pkgs = import ../nixpkgs {}; in rec {
       inherit (_pkgs)
         bison bzip2 coreutils dash diffutils fetchurl gcc gzip help2man lib lzma
-        xz stdenv;
+        patch xz;
       autoconf = _pkgs.autoconf264;
       automake = _pkgs.automake112x.override { inherit autoconf; };
       awk = _pkgs.gawk;
@@ -22,6 +22,7 @@ let
   Package = file: import file { inherit nixpkgs srcs stage0 stage1; };
   stage1 = {
     inherit Derivation config;
+    binutils = Package ./binutils;
     libstdcxx = Package ./libstdcxx;
     musl = Package ./musl;
   };
