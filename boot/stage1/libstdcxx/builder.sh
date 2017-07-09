@@ -4,11 +4,6 @@ unpackTar "${src:?}" gcc
 cd gcc
 
 
-# Regenerate
-
-autoreconf -fi -I$(pwd)/config libstdc++-v3
-
-
 # Configure
 
 mkdir -v build

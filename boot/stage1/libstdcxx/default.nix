@@ -1,9 +1,8 @@
 { nixpkgs, srcs, stage0, stage1, ... }:
 
 let
-  inherit (nixpkgs) autoconf automake;
   build_gcc = nixpkgs.gcc;
-  inherit (stage0) binutils gcc libtool;
+  inherit (stage0) binutils gcc;
   inherit (stage1) Derivation musl;
   inherit (stage1.config) platforms;
   inherit (builtins.parseDrvName gcc.name) version;
@@ -16,7 +15,7 @@ Derivation {
     arch = platforms.target.machine;
     inherit version;
   };
-  buildInputs = [ autoconf automake binutils build_gcc gcc libtool ];
+  buildInputs = [ binutils build_gcc gcc ];
   hostInputs = [ musl ];
   builder = ./builder.sh;
 }
