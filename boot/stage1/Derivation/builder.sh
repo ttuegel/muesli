@@ -82,7 +82,6 @@ do
     fi
 done
 
-CFLAGS="${CPPFLAGS}${CPPFLAGS:+ }${CFLAGS}${CFLAGS:+ }${LDFLAGS}"
 export CFLAGS
 
 ## Set CXXFLAGS
@@ -102,7 +101,6 @@ do
     fi
 done
 
-CXXFLAGS="${CPPFLAGS}${CPPFLAGS:+ }${CXXFLAGS}${CXXFLAGS:+ }${LDFLAGS}"
 export CXXFLAGS
 
 ## Target build tools
