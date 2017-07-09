@@ -39,6 +39,7 @@ let
     libstdcxx = Import ./libstdcxx {};
     mpc = Import ./mpc {};
     mpfr = Import ./mpfr {};
+    zlib = Import ./zlib {};
   };
 
 in

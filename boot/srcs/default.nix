@@ -79,4 +79,11 @@
       sha256 = "048h0w4yjyza4h05bkc6dpwg3hq6l03na46g0q1ha8fpwnjqawck";
     };
   };
+  zlib = rec {
+    name = "zlib-1.2.11";
+    src = fetchurl {
+      url = "http://zlib.net/${name}.tar.xz";
+      sha256 = "0rphkghi888axabiy4c4812xmjfvx4xliqq3sbaf1b1ijr243yag";
+    };
+  };
 }
