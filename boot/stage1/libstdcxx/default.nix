@@ -2,10 +2,10 @@
 
 let
   build_gcc = nixpkgs.gcc;
-  inherit (stage0) binutils gcc;
   inherit (stage1) Derivation musl;
   inherit (stage1.config) platforms;
   inherit (builtins.parseDrvName gcc.name) version;
+  gcc = musl.wrapCC stage0.gcc;
 in
 
 Derivation {
@@ -15,7 +15,7 @@ Derivation {
     arch = platforms.target.machine;
     inherit version;
   };
-  buildInputs = [ binutils build_gcc gcc ];
+  buildInputs = [ build_gcc gcc ];
   hostInputs = [ musl ];
   builder = ./builder.sh;
 }
