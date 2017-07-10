@@ -12,7 +12,7 @@ let
     inherit srcs;
     inherit (config) platforms;
     inherit (nixpkgs)
-      lib bison bzip2 coreutils dash diffutils gzip lzma patch xz;
+      lib bison bzip2 coreutils dash diffutils findutils gzip lzma patch xz;
     awk = nixpkgs.gawk;
     grep = nixpkgs.gnugrep;
     m4 = nixpkgs.gnum4;
