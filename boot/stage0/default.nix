@@ -12,7 +12,7 @@ let
   stage0 = {
     inherit Derivation config;
     binutils = Package ./binutils;
-    gcc = Package ./gcc;
+    targetCC = Package ./gcc;
   };
 in
 stage0
