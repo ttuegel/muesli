@@ -4,10 +4,6 @@
   m4, make, patch, sed, tar, xz,
 }:
 
-let targetCC_ = targetCC; in
-
-let targetCC = (cc: if libc == null then cc else libc.wrapCC cc) targetCC_; in
-
 let
   defaultBuildInputs = [
     awk binutils buildCC bzip2 coreutils dash diffutils findutils grep gzip lzma

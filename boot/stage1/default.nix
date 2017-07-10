@@ -27,18 +27,24 @@ let
   Import = import ../../lib/Import.nix scope;
   Platform = import ../../lib/Platform.nix;
 
-  Derivation = Import ./Derivation {};
-
-  musl = Import ./musl { inherit Derivation; };
-
-  stage1 = {
-    inherit config musl;
-    Derivation = Derivation.Import.override { libc = musl; };
+  stage1 = rec {
+    inherit config;
+    Derivation = Import ./Derivation {};
     binutils = Import ./binutils {};
+    targetCC = musl.wrapCC stage0.targetCC;
     gmp = Import ./gmp {};
     libstdcxx = Import ./libstdcxx {};
     mpc = Import ./mpc {};
     mpfr = Import ./mpfr {};
+    musl = Import ./musl {
+      Derivation = Derivation.Import.override {
+        # The build environment for musl should contain no libc,
+        # because we haven't built one yet. Consequently, the targetCC
+        # should be bare.
+        libc = null;
+        inherit (stage0) targetCC;
+      };
+    };
     zlib = Import ./zlib {};
   };
 
