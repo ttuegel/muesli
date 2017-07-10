@@ -12,7 +12,10 @@ let
     Derivation {
       inherit (srcs.musl) name src;
       builder = ./builder.sh;
-      passthru = { inherit wrapCC; };
+      passthru = {
+        inherit wrapCC;
+        nativeHeaders = "${musl}/include";
+      };
     };
 in
 musl

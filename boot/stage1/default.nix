@@ -19,9 +19,9 @@ let
     make = nixpkgs.gnumake;
     sed = nixpkgs.gnused;
     tar = nixpkgs.gnutar;
-    inherit (stage0) binutils;
+    inherit (stage0) binutils linux-headers;
     buildCC = nixpkgs.gcc7;
-    targetCC = stage0.gcc;
+    buildBinutils = nixpkgs.binutils;
   };
 
   Import = import ../../lib/Import.nix scope;
@@ -31,6 +31,7 @@ let
     inherit config;
     Derivation = Import ./Derivation {};
     binutils = Import ./binutils {};
+    hostCC = Import ./gcc {};
     targetCC = musl.wrapCC stage0.targetCC;
     gmp = Import ./gmp {};
     libstdcxx = Import ./libstdcxx {};

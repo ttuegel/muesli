@@ -4,10 +4,10 @@ for prog in "${cc:?}"/bin/*
 do
     dest="${out:?}/bin/$(basename $prog)"
     case "$prog" in
-        *gcc | *g++)
+        *c++ | *gcc | *g++)
             cat > "${dest:?}" <<EOF
 #!/bin/sh
-exec "$prog" "\$@" -specs "${specs:?}"
+exec "$prog" -specs "${specs:?}" "\$@"
 EOF
             chmod +x "${dest:?}"
             ;;

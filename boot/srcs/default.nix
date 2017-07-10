@@ -40,6 +40,9 @@
       url = "https://ftp.gnu.org/gnu/gcc/gcc-7.1.0/${name}.tar.bz2";
       sha256 = "05xwps0ci7wgxh50askpa2r9p8518qxdgh6ad7pnyk7n6p13d0ca";
     };
+    patches = [
+      ./gcc/gcc-libsanitizer-musl.patch
+    ];
   };
   gmp = rec {
     name = "gmp-6.1.2";
