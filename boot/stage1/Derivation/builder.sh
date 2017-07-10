@@ -108,6 +108,21 @@ CC=${target:?}-gcc; export CC
 CPP=${target:?}-cpp; export CPP
 CXX=${target:?}-g++; export CXX
 
+## Parallel builds
+## Normalize `buildJobs': use the provided value or, if it is unset,
+## detect the number of available processors.
+
+if [ -z "${buildJobs}" ]; then
+    buildJobs=$(nproc 2>/dev/null || true)
+    if expr >/dev/null 2>&1 "${buildJobs}" : "^[0-9][0-9]*$"; then
+        :
+    else
+        buildJobs="1"
+    fi
+fi
+
+MAKEFLAGS="-j${buildJobs:?}"; export MAKEFLAGS
+
 
 # Definitions
 
