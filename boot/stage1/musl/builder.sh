@@ -29,3 +29,10 @@ make
 
 make install
 make "${out:?}/lib/musl-gcc.specs"
+
+
+# Fixup
+
+mkdir -pv "${out:?}/config/host"
+
+echo "-idirafter ${out:?}/include" >> "${out:?}/config/host/CPPFLAGS"
