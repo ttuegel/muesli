@@ -24,8 +24,6 @@ done
 export PATH
 
 ## Set CPPFLAGS
-CPPFLAGS=
-
 for inp in $buildInputs
 do
     if [ -e "$inp/config/build/CPPFLAGS" ]; then
@@ -45,8 +43,6 @@ done
 export CPPFLAGS
 
 ## Set LDFLAGS
-LDFLAGS=
-
 for inp in $buildInputs
 do
     if [ -e "$inp/config/build/LDFLAGS" ]; then
@@ -66,8 +62,6 @@ done
 export LDFLAGS
 
 ## Set CFLAGS
-CFLAGS=
-
 for inp in $buildInputs
 do
     if [ -e "$inp/config/build/CFLAGS" ]; then
@@ -85,8 +79,6 @@ done
 export CFLAGS
 
 ## Set CXXFLAGS
-CXXFLAGS=
-
 for inp in $buildInputs
 do
     if [ -e "$inp/config/build/CXXFLAGS" ]; then
