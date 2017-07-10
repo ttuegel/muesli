@@ -58,6 +58,13 @@
       ./libtool/libtool-passthru-flags.patch
     ];
   };
+  linux = rec {
+    name = "linux-4.9.36";
+    src = fetchurl {
+      url = "https://cdn.kernel.org/pub/linux/kernel/v4.x/${name}.tar.xz";
+      sha256 = "1x615q5fl17fqr8h0552l7lzrpmn1n9azmsrnq9xhf980imfj0d0";
+    };
+  };
   mpc = rec {
     name = "mpc-1.0.3";
     src = fetchurl {

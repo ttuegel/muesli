@@ -13,6 +13,7 @@ let
     inherit Derivation config;
     binutils = Package ./binutils;
     targetCC = Package ./gcc;
+    linux-headers = Package ./linux-headers;
   };
 in
 stage0
