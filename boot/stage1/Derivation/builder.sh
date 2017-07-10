@@ -11,13 +11,13 @@ LC_ALL=POSIX
 export LC_ALL
 
 ## Set PATH
-PATH=
+PATH=/bin
 for inp in $buildInputs
 do
     for dir in bin sbin
     do
         if [ -d "$inp/$dir" ]; then
-            PATH="${PATH}${PATH:+:}$inp/$dir";
+            PATH="$inp/$dir${PATH:+:}${PATH}";
         fi
     done
 done
